@@ -7,7 +7,7 @@
   /*===== Colores =====*/
   /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
   /* HSL color mode */
-  --hue-color: 224;
+  --hue-color: 230;
   --first-color: hsl(var(--hue-color), 89%, 60%);
   --second-color: hsl(var(--hue-color), 56%, 12%);
   /*===== Fuente y tipografia =====*/
@@ -266,6 +266,149 @@ img {
   border-radius: 0.5rem;
 }
 
+/* ===== EXPERIENCE =====*/
+.experience, .experience::before, .experience::after {
+  box-sizing: border-box;
+}
+
+.experiences__container {
+  position: relative;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 15px 0;
+}
+
+.experiences__container::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background: #000f6e;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1px;
+  
+}
+
+.experience__cont {
+  padding: 15px 10px;
+  position: relative;
+  background: inherit;
+  width: 50%;
+}
+
+.experience__cont.left {
+  left: 0;
+}
+
+.experience__cont.right {
+  left: 50%;
+}
+
+.experience__cont::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: calc(50% - 8px);
+  right: -8px;
+  background: #ffffff;
+  border: 2px solid #001b6e;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.experience__cont.right::after {
+  left: -8px;
+}
+
+.experience__cont::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 2px;
+  top: calc(50% - 1px);
+  right: 8px;
+  background: #000f6e;
+  z-index: 1;
+}
+
+.experience__cont.right::before {
+  left: 8px;
+}
+
+.experience__cont .time {
+  position: absolute;
+  display: inline-block;
+  top: calc(50% - 8px);
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 1;
+}
+
+.experience__cont.left .time {
+  right: -100px;
+}
+
+.experience__cont.right .time {
+  left: -100px;
+}
+
+.experience__cont .icon {
+  position: absolute;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  padding: 9px 0;
+  top: calc(50% - 20px);
+  background: #55bbf6;
+  border: 2px solid #ffffff;
+  border-radius: 40px;
+  text-align: center;
+  font-size: 18px;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.experience__cont.left .icon {
+  right: 56px;
+}
+
+.experience__cont.right .icon {
+  left: 56px;
+}
+
+.experience__cont .experience__desc {
+  padding: 30px 90px 30px 30px; /*top, right, bt, left*/
+  background: var(--first-color);
+  position: relative;
+  border-radius: 0 500px 500px 0;
+}
+
+.experience__cont.right .experience__desc {
+  padding: 30px 30px 30px 90px;
+  border-radius: 500px 0 0 500px;
+}
+
+.experience__cont .experience__desc h2 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+  font-weight: normal;
+  color: #ffffff;
+}
+
+.experience__cont .experience__desc p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22px;
+  color: #cbcad0;
+}
+
 /* ===== SKILLS =====*/
 .skills {
   text-align: center;
@@ -291,7 +434,7 @@ img {
 
 .skill i {
   font-size: 40px;
-  color: aqua;
+  color: var(--first-color);
   margin-bottom: 5px;
 }
 /* .skills__subtitle {
@@ -510,6 +653,7 @@ img {
   .education__img img {
     width: 300px;
   }
+  
   .skills__container {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 2rem;
@@ -531,5 +675,49 @@ img {
   }
   .home__img {
     width: 450px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  
+  .experiences__container::after {
+    left: 90px;
+  }
+  .experience__cont {
+    width: 100%;
+    padding-left: 120px;
+    padding-right: 30px;
+  }
+  .experience__cont.right {
+    left: 0%;
+  }
+
+  .experience__cont.left::after,
+  .experience__cont.right::after {
+    left: 82px;
+  }
+
+  .experience__cont.left::before,
+  .experience__cont.right::before {
+    left: 100px;
+    border-color: transparent #006E51 transparent transparent;
+  }
+
+  .experience__cont.left .time,
+  .experience__cont.right .time {
+    right: auto;
+    left: 15px;
+  }
+
+  .experience__cont.left .icon,
+  .experience__cont.right .icon {
+    right: auto;
+    left: 146px;
+  }
+
+  .experience__cont.left .experience__desc,
+  .experience__cont.right .experience__desc {
+    padding: 30px 50px 30px 90px; /*top, right, bt, left*/
+    border-radius: 500px 0 0 500px;
   }
 }
