@@ -257,6 +257,7 @@ img {
 }
 .education__desc {
   margin-bottom: var(--mb-2);
+  
 }
 .education__img {
   justify-self: center;
@@ -264,6 +265,16 @@ img {
 .education__img img {
   width: 200px;
   border-radius: 0.5rem;
+}
+
+.edu_uni {
+ 
+  font-weight: lighter;
+}
+
+.edu_year {
+  color: var(--first-color);
+  font-weight: lighter;
 }
 
 /* ===== EXPERIENCE =====*/
@@ -387,12 +398,12 @@ img {
   padding: 30px 90px 30px 30px; /*top, right, bt, left*/
   background: var(--first-color);
   position: relative;
-  border-radius: 0 500px 500px 0;
+  border-radius: 100px 500px 500px 100px;
 }
 
 .experience__cont.right .experience__desc {
   padding: 30px 30px 30px 90px;
-  border-radius: 500px 0 0 500px;
+  border-radius: 500px 100px 100px 500px;
 }
 
 .experience__cont .experience__desc h2 {
@@ -524,6 +535,42 @@ img {
   margin-left: auto;
 }
 
+
+/* ===== SERTIFICATION =====*/
+.horizontal-scroll {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 10px;
+
+  /* Hilangkan scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer & Edge */
+  
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mengatur layout gambar */
+.car-container {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Default: 4 gambar dalam satu tampilan (untuk layar besar) */
+.item {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
 /* ===== FOOTER =====*/
 .footer {
   background-color: var(--second-color);
@@ -557,6 +604,15 @@ img {
     width: 200px;
   }
 }
+
+/* HP kecil: 1 gambar dalam satu tampilan */
+@media (max-width: 480px) {
+  .item {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
 @media screen and (min-width: 576px) {
   .home {
     padding: 4rem 0 2rem;
@@ -719,5 +775,18 @@ img {
   .experience__cont.right .experience__desc {
     padding: 30px 50px 30px 90px; /*top, right, bt, left*/
     border-radius: 500px 0 0 500px;
+  }
+
+  .item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+/* Tablet: 3 gambar dalam satu tampilan */
+@media (max-width: 1024px) {
+  .item {
+    flex: 0 0 33.33%;
+    max-width: 33.33%;
   }
 }
