@@ -55,3 +55,15 @@ sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{});
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img, .skill, .experiences__container',{delay: 400}); 
 sr.reveal('.home__social-icon, experience__cont',{ interval: 200}); 
 sr.reveal('.skills__data, .work__img, .contact__input, .skill',{interval: 200}); 
+
+
+/*===== POP UP BUTTON =====*/
+function togglePopup() {
+    // var popup = document.getElementById("popup");
+    var popup = button.nextElementSibling;
+    if (popup.style.display === "block") {
+        popup.style.display = "none";
+    } else {
+        popup.style.display = "block";
+    }
+}
