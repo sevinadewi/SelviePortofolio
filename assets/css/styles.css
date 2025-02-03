@@ -250,31 +250,73 @@ img {
   border-radius: 0.5rem;
 }
 
-/* ===== EDUCATION =====*/
+/* ===== EDUCATION SECTION ===== */
 .education__container {
-  row-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  padding: 50px 20px;
+  background: #f8f9fa; /* Warna latar belakang soft */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.education__content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px;
+  gap: 2rem;
+}
+
 .education__desc {
-  margin-bottom: var(--mb-2);
-  
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
 }
-.education__img {
-  justify-self: center;
-}
-.education__img img {
-  width: 200px;
-  border-radius: 0.5rem;
+
+.edu_title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
 }
 
 .edu_uni {
- 
-  font-weight: lighter;
+  font-size: 18px;
+  font-weight: 500;
+  color: #555;
+}
+
+.gpa span {
+  font-weight: bold;
+  color: #007bff;
 }
 
 .edu_year {
-  color: var(--first-color);
-  font-weight: lighter;
+  font-size: 16px;
+  font-style: italic;
+  color: #007bff;
+}
+
+/* Image Styling */
+.education__img {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.education__img img {
+  width: 200px;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.education__img img:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* ===== EXPERIENCE =====*/
@@ -428,6 +470,15 @@ img {
 
 
 /*    pop up experience     */
+
+/* Container untuk menampung tombol */
+.popup-container {
+  display: flex;
+  justify-content: left;
+  gap: 15px;
+  flex-wrap: wrap; /* Agar responsive */
+}
+
 .popup-button-container {
   position: relative;
   display: inline-block;
@@ -435,15 +486,22 @@ img {
 }
 
 .open-btn {
+  font-family: inherit;
   padding: 10px 30px;
-  font-size: 16px;
+  font-size: 13px;
+  /* border: 1px solid;
+  border-color: #fff; */
   border: none;
   background-color: #007bff;
+  box-shadow: 0px 4px 25px rgba(14, 36, 49, 0.15);
   color: white;
   border-radius: 5px;
   cursor: pointer;
-
-
+  min-width: 120px; /* Membuat ukuran tombol seragam */
+}
+.open-btn:hover {
+  background-color: #0056b3;
+  color: #fff;
 }
 .popup {
   display: none;
@@ -461,6 +519,10 @@ img {
   margin-top: 10px;
   
 }
+.popup.active {
+  display: block;
+}
+
 .popup::before {
   content: "";
   position: absolute;
@@ -470,6 +532,17 @@ img {
   border-width: 10px;
   border-style: solid;
   border-color: transparent transparent white transparent;
+}
+.popup a {
+  display: block;
+  margin: 5px 0;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.popup a:hover {
+  text-decoration: underline;
 }
 .close-btn {
   position: absolute;
@@ -638,6 +711,12 @@ img {
     flex: 0 0 100%;
     max-width: 100%;
   }
+
+
+  .popup-container {
+    flex-direction: column;
+    align-items: center;
+}
 }
 
 @media screen and (min-width: 576px) {
@@ -685,6 +764,17 @@ img {
     justify-items: center;
   }
 }
+
+@media (max-width: 768px) {
+  .education__content {
+      flex-direction: column;
+      text-align: center;
+  }
+  .education__desc, .education__img {
+      width: 100%;
+  }
+}
+
 @media screen and (min-width: 768px) {
   body {
     margin: 0;

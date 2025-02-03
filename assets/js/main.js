@@ -58,12 +58,47 @@ sr.reveal('.skills__data, .work__img, .contact__input, .skill',{interval: 200});
 
 
 /*===== POP UP BUTTON =====*/
-function togglePopup() {
-    // var popup = document.getElementById("popup");
-    var popup = button.nextElementSibling;
-    if (popup.style.display === "block") {
-        popup.style.display = "none";
-    } else {
-        popup.style.display = "block";
+// function togglePopup() {
+//     // var popup = document.getElementById("popup");
+//     // var popup = button.nextElementSibling;
+//     // if (popup.style.display === "block") {
+//     //     popup.style.display = "none";
+//     // } else {
+//     //     popup.style.display = "block";
+//     // }
+    
+// }
+
+function togglePopup(button) {
+    var popup;
+
+    // Jika tombol yang diklik adalah tombol "Close (×)", cari parent terdekat dengan class "popup"
+    if (button.classList.contains("close-btn")) {
+        popup = button.parentElement;
+    } 
+    // Jika tombol yang diklik adalah tombol utama (open-btn), cari popup dalam parent container
+    else {
+        popup = button.parentElement.querySelector(".popup");
     }
+
+    // Toggle class active untuk menampilkan atau menyembunyikan popup
+    popup.classList.toggle("active");
 }
+
+// Menutup popup jika klik di luar
+document.addEventListener("click", function(event) {
+    let popups = document.querySelectorAll(".popup");
+
+            popups.forEach(popup => {
+                if (!popup.contains(event.target) && !popup.previousElementSibling.contains(event.target)) {
+                    popup.classList.remove("active");
+                }
+            });
+});
+
+// Mencegah popup tertutup saat klik di dalamnya
+document.querySelectorAll(".popup").forEach(popup => {
+    popup.addEventListener("click", function(event) {
+        event.stopPropagation();
+    });
+});
