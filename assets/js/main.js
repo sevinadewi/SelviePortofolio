@@ -70,19 +70,36 @@ sr.reveal('.skills__data, .work__img, .contact__input, .skill',{interval: 200});
 // }
 
 function togglePopup(button) {
-    var popup;
+    let popup;
 
-    // Jika tombol yang diklik adalah tombol "Close (×)", cari parent terdekat dengan class "popup"
+    // Jika tombol yang diklik adalah tombol "Close (×)"
     if (button.classList.contains("close-btn")) {
-        popup = button.parentElement;
+        popup = button.closest(".popup");
     } 
-    // Jika tombol yang diklik adalah tombol utama (open-btn), cari popup dalam parent container
+    // Jika klik di card work__item (atau child-nya)
     else {
-        popup = button.parentElement.querySelector(".popup");
+        let card = button.closest(".work__item");
+        if (card) {
+            popup = card.querySelector(".popup");
+        } else {
+            // fallback untuk experience/open-btn
+            popup = button.parentElement.querySelector(".popup");
+        }
     }
 
-    // Toggle class active untuk menampilkan atau menyembunyikan popup
-    popup.classList.toggle("active");
+    if (popup) {
+        popup.classList.toggle("active");
+    }
+}
+
+function openPopup(el) {
+    const popup = el.querySelector(".popup");
+    popup.classList.add("active");
+}
+
+function closePopup(el) {
+    const popup = el.closest(".popup");
+    popup.classList.remove("active");
 }
 
 // Menutup popup jika klik di luar
@@ -102,3 +119,4 @@ document.querySelectorAll(".popup").forEach(popup => {
         event.stopPropagation();
     });
 });
+
